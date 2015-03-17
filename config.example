@@ -1,0 +1,27 @@
+[general]
+# Path for s3 object storage. Must be created beforehand and accessible by cloudtrail-poller.
+log-path: out
+
+[ascender]
+ip: 127.0.0.1
+port: 6030
+
+[aws-sqs]
+# Access to read and delete messages from the SNS subscribed SQS queue.
+name: queue
+region: us-west-2
+access: xxx 
+secret: xxxxxx
+
+[aws-s3]
+# Access to download s3 objects from the Cloudtrail bucket.
+access: xxx 
+secret: xxxxxx
+
+[tuning]
+# sqsconsumer and s3fetcher run as separate processes (workers) with thread pools (threads).
+# Likely doesn't need adjustments, but could benefit from increased thread counts for imporoved performance.
+sqs-workers: 1
+sqs-threads: 3
+s3-workers: 1
+s3-threads: 8
