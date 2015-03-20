@@ -1,6 +1,3 @@
-cloudtrail-poller
-=================
-
 ### Overview
 
 Cloudtrail-poller captures AWS API logs and writes them to [Ascender](https://github.com/jamiealquiza/ascender). Via the AWS config, Cloudtrail logs are routinely compressed and dumped to a specified s3 bucket. Additionally, SNS notifications can be sent when new, compressed archives of Cloudtrail logs are available in s3. Cloudtrail-poller works by subscribing and SQS queue to the Cloudtrail SNS notifier and listening to the qeueue for notifications that new log archives available for download. Cloudtrail-poller handles logs in several transactions to ensure reliability of log receipt/delivery, each stage of the transaction handled by different subcomponents:
